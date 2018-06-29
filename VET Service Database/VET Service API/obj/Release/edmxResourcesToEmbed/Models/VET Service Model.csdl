@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SwinnyVetServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="OwnerID" Type="Int32" Nullable="false" />
+    <Property Name="OwnerFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OwnerLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OwnerPhoneNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pets" Relationship="Self.Fk_OwnerID" FromRole="Owner" ToRole="Pet" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="PetName" />
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="PetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PetType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OwnerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Owner" Relationship="Self.Fk_OwnerID" FromRole="Pet" ToRole="Owner" />
+    <NavigationProperty Name="Treatments" Relationship="Self.FK_Treatment_PetName" FromRole="Pet" ToRole="Treatment" />
+  </EntityType>
+  <EntityType Name="Procedure">
+    <Key>
+      <PropertyRef Name="ProcedureID" />
+    </Key>
+    <Property Name="ProcedureID" Type="Int32" Nullable="false" />
+    <Property Name="ProcedureDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProcedurePrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Treatments" Relationship="Self.FK_Treatment_ProcedureID" FromRole="Procedure" ToRole="Treatment" />
+  </EntityType>
+  <EntityType Name="Treatment">
+    <Key>
+      <PropertyRef Name="PetName" />
+      <PropertyRef Name="OwnerID" />
+      <PropertyRef Name="ProcedureID" />
+      <PropertyRef Name="TreatmentDate" />
+    </Key>
+    <Property Name="PetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OwnerID" Type="Int32" Nullable="false" />
+    <Property Name="ProcedureID" Type="Int32" Nullable="false" />
+    <Property Name="TreatmentDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TreatmentNotes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TreatmentPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pet" Relationship="Self.FK_Treatment_PetName" FromRole="Treatment" ToRole="Pet" />
+    <NavigationProperty Name="Procedure" Relationship="Self.FK_Treatment_ProcedureID" FromRole="Treatment" ToRole="Procedure" />
+  </EntityType>
+  <Association Name="Fk_OwnerID">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Treatment_PetName">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="PetName" />
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="PetName" />
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Treatment_ProcedureID">
+    <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedure">
+        <PropertyRef Name="ProcedureID" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="ProcedureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Owners" EntityType="Self.Owner" />
+    <EntitySet Name="Pets" EntityType="Self.Pet" />
+    <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+    <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+    <AssociationSet Name="Fk_OwnerID" Association="Self.Fk_OwnerID">
+      <End Role="Owner" EntitySet="Owners" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treatment_PetName" Association="Self.FK_Treatment_PetName">
+      <End Role="Pet" EntitySet="Pets" />
+      <End Role="Treatment" EntitySet="Treatments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treatment_ProcedureID" Association="Self.FK_Treatment_ProcedureID">
+      <End Role="Procedure" EntitySet="Procedures" />
+      <End Role="Treatment" EntitySet="Treatments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

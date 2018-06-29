@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SwinnyVetServiceModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Owners">
+      <EntityTypeMapping TypeName="SwinnyVetServiceModel.Owner">
+        <MappingFragment StoreEntitySet="Owner">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="OwnerFName" ColumnName="OwnerFName" />
+          <ScalarProperty Name="OwnerLName" ColumnName="OwnerLName" />
+          <ScalarProperty Name="OwnerPhoneNumber" ColumnName="OwnerPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pets">
+      <EntityTypeMapping TypeName="SwinnyVetServiceModel.Pet">
+        <MappingFragment StoreEntitySet="Pet">
+          <ScalarProperty Name="PetName" ColumnName="PetName" />
+          <ScalarProperty Name="PetType" ColumnName="PetType" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedures">
+      <EntityTypeMapping TypeName="SwinnyVetServiceModel.Procedure">
+        <MappingFragment StoreEntitySet="Procedure">
+          <ScalarProperty Name="ProcedureID" ColumnName="ProcedureID" />
+          <ScalarProperty Name="ProcedureDescription" ColumnName="ProcedureDescription" />
+          <ScalarProperty Name="ProcedurePrice" ColumnName="ProcedurePrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Treatments">
+      <EntityTypeMapping TypeName="SwinnyVetServiceModel.Treatment">
+        <MappingFragment StoreEntitySet="Treatment">
+          <ScalarProperty Name="PetName" ColumnName="PetName" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="ProcedureID" ColumnName="ProcedureID" />
+          <ScalarProperty Name="TreatmentDate" ColumnName="TreatmentDate" />
+          <ScalarProperty Name="TreatmentNotes" ColumnName="TreatmentNotes" />
+          <ScalarProperty Name="TreatmentPrice" ColumnName="TreatmentPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

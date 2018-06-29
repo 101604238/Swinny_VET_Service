@@ -1,0 +1,5 @@
+C:\Users\STUDENT\Desktop\101604238\Projects\End of Semester Resit\VET Service Database\Swinny VET Service\bin\Debug\VET Service Database.dacpac
+C:\Users\STUDENT\Desktop\101604238\Projects\End of Semester Resit\VET Service Database\Swinny VET Service\obj\Debug\Swinny_VET_Service.dll
+C:\Users\STUDENT\Desktop\101604238\Projects\End of Semester Resit\VET Service Database\Swinny VET Service\obj\Debug\Swinny_VET_Service.pdb
+C:\Users\STUDENT\Desktop\101604238\Projects\End of Semester Resit\VET Service Database\Swinny VET Service\bin\Debug\Swinny_VET_Service.dll
+C:\Users\STUDENT\Desktop\101604238\Projects\End of Semester Resit\VET Service Database\Swinny VET Service\bin\Debug\Swinny_VET_Service.pdb

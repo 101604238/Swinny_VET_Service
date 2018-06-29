@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Entities-Web.config Connection String" description="Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=&quot;res://*/Models.VET Service Model.csdl|res://*/Models.VET Service Model.ssdl|res://*/Models.VET Service Model.msl&quot;;provider=System.Data.SqlClient;provider connection string=&quot;data source=nicholasainsworthswinburne2018.database.windows.net;initial catalog=101604238SwinnyVetService;persist security info=True;user id=nicholasainsworth;password=bfx-2WG-pGx-5hn;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\STUDENT\\Desktop\\101604238\\Projects\\End\ of\ Semester\ Resit\\VET\ Service\ Database\\VET\ Service\ API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Entities']/@connectionString" />
+  </parameter>
+</parameters>
